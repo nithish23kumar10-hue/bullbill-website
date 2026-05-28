@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BullBill — Billing App for Indian Restaurants</title>
+  <meta name="description" content="BullBill is the billing app Indian restaurant owners trust. Works without internet, prints GST bills, manages tables and kitchen orders, and brings customers back with loyalty rewards." />
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ──────────────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="logo-badge">
+          <img src="assets/images/logo-icon.png" alt="BullBill" class="logo-img" />
+        </div>
+        <span class="logo-wordmark">Bull<span>Bill</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">What You Get</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#services">Inside BullBill</a></li>
+        <li><a href="#pricing">Plans</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#pricing" class="btn btn-ghost">See Plans</a>
+        <a href="#contact" class="btn btn-primary">Try for Free</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ────────────────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Made for Indian restaurants &bull; Works without internet &bull; GST ready
+      </div>
+
+      <div class="hero-logo-wrap reveal delay-1">
+        <div class="hero-logo-badge">
+          <img src="assets/images/logo-icon.png" alt="BullBill" class="hero-logo" id="heroLogo" />
+        </div>
+        <div class="logo-ring ring-1"></div>
+        <div class="logo-ring ring-2"></div>
+        <div class="logo-ring ring-3"></div>
+      </div>
+
+      <h1 class="hero-title reveal delay-2">
+        Your restaurant<br /><span class="gradient-text">never stops billing.</span>
+      </h1>
+      <p class="hero-subtitle reveal delay-3">
+        BullBill handles your bills, kitchen orders, GST, and customer rewards —
+        all from one app. Even when the internet goes down, your cashier keeps going.
+      </p>
+
+      <div class="hero-actions reveal delay-4">
+        <a href="#contact" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Try Free for 30 Days
+        </a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">
+          See How It Works
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Brand banner showcase -->
+      <div class="hero-brand-banner reveal delay-4">
+        <img src="assets/images/logo-dark.png" alt="BullBill — Smart Billing. Strong Business." class="brand-banner-img" />
+      </div>
+
+      <div class="hero-stats reveal delay-5">
+        <div class="stat-item">
+          <span class="stat-num" data-target="10">0</span><span class="stat-unit"> min</span>
+          <span class="stat-label">To Go Live</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="100">0</span><span class="stat-unit">%</span>
+          <span class="stat-label">GST Ready</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="0">0</span><span class="stat-unit"></span>
+          <span class="stat-label">Bills Ever Lost</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ─────────────────────────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">What You Get</span>
+        <h2 class="section-title reveal delay-1">Everything you need to<br /><span class="gradient-text">run your restaurant smoothly</span></h2>
+        <p class="section-subtitle reveal delay-2">No more manual bills. No more shouting across the kitchen. No more chasing customers. BullBill takes care of all of it.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card reveal" data-delay="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><path d="M16 12h16a2 2 0 012 2v4a2 2 0 01-2 2H16a2 2 0 01-2-2v-4a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 20v16h20V20" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 28h8M20 32h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Bills even when Wi-Fi goes down</h3>
+          <p>Your cashier keeps billing even when the internet drops. No panic, no manual slips. BullBill saves every bill and syncs automatically when you're back online.</p>
+          <div class="feature-tag">Never lose a sale</div>
+        </div>
+
+        <div class="feature-card reveal" data-delay="100">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><path d="M24 14l2.5 5 5.5.8-4 3.9.95 5.5L24 26.5l-4.95 2.7.95-5.5-4-3.9 5.5-.8L24 14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 36h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>GST bills done automatically</h3>
+          <p>Every bill is GST-correct — CGST, SGST, proper invoice numbers, your GSTIN. Hand it straight to your CA without touching a spreadsheet.</p>
+          <div class="feature-tag">Tax sorted for you</div>
+        </div>
+
+        <div class="feature-card reveal" data-delay="200">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><circle cx="24" cy="20" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M32 14l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Bring your regulars back</h3>
+          <p>Add a customer's phone number at billing — that's it. They earn points automatically. You can send them a special offer or a free dessert from your phone. No app needed on their end.</p>
+          <div class="feature-tag">Grow repeat visits</div>
+        </div>
+
+        <div class="feature-card reveal" data-delay="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><rect x="10" y="14" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/><rect x="26" y="14" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/><rect x="10" y="26" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/><rect x="26" y="26" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Your data belongs only to you</h3>
+          <p>Your sales, your customer list, your menu — completely private. No other restaurant can ever see your numbers. Your business stays your business.</p>
+          <div class="feature-tag">Private & secure</div>
+        </div>
+
+        <div class="feature-card reveal" data-delay="100">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><path d="M24 12v4M24 32v4M12 24h4M32 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/><path d="M17 17l2.8 2.8M28.2 28.2L31 31M17 31l2.8-2.8M28.2 19.8L31 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Kitchen gets orders the moment waiter taps</h3>
+          <p>No shouting. No lost paper slips. The second your waiter confirms an order, the kitchen screen lights up with it. Food comes out faster, customers stay happy.</p>
+          <div class="feature-tag">Faster service</div>
+        </div>
+
+        <div class="feature-card reveal" data-delay="200">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><path d="M14 34V20l10-8 10 8v14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 34v-8h8v8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 34h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>All your branches in one place</h3>
+          <p>Running two outlets or ten? Manage every branch — menus, staff, daily sales — from a single login. No juggling between apps or calling the manager every hour.</p>
+          <div class="feature-tag">Grow bigger</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ORDER LIFECYCLE ───────────────────────────────────────────── -->
+  <section class="lifecycle" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Daily Workflow</span>
+        <h2 class="section-title reveal delay-1">From order to payment —<br /><span class="gradient-text">every step handled for you</span></h2>
+        <p class="section-subtitle reveal delay-2">Your waiter, kitchen, and cashier all work from the same app. Nothing falls through the cracks.</p>
+      </div>
+
+      <div class="lifecycle-flow reveal delay-2">
+        <div class="lifecycle-step" data-step="1">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">ORDER TAKEN</span>
+            <span class="step-desc">Waiter picks table and adds dishes</span>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="lifecycle-step" data-step="2">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">SENT TO KITCHEN</span>
+            <span class="step-desc">Kitchen screen shows it instantly</span>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="lifecycle-step" data-step="3">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">BEING PREPARED</span>
+            <span class="step-desc">Chef is cooking, status updates live</span>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="lifecycle-step" data-step="4">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">FOOD IS READY</span>
+            <span class="step-desc">Waiter gets an alert on their phone</span>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="lifecycle-step" data-step="5">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">FOOD SERVED</span>
+            <span class="step-desc">Waiter marks it served at the table</span>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="lifecycle-step" data-step="6">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">BILL READY</span>
+            <span class="step-desc">GST bill in one tap — UPI, cash or card</span>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="lifecycle-step active" data-step="7">
+          <div class="step-bubble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="step-info">
+            <span class="step-state">PAYMENT DONE</span>
+            <span class="step-desc">Customer earns points. Reports update.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── INSIDE BULLBILL ────────────────────────────────────────────── -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Inside BullBill</span>
+        <h2 class="section-title reveal delay-1">One app that handles<br /><span class="gradient-text">your whole restaurant</span></h2>
+        <p class="section-subtitle reveal delay-2">Every part of your daily operation — from the front door to the kitchen to the cash drawer — covered in one place.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal" data-delay="0">
+          <div class="service-icon" style="--icon-color:#6366f1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Safe Logins for Every Role</h4>
+          <p>Owner, cashier, waiter, kitchen — each person gets their own login. Waiters can't change prices. Cashiers can't delete bills. You stay in control.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="80">
+          <div class="service-icon" style="--icon-color:#2563eb">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Tables & Floor Management</h4>
+          <p>Set up your floors and tables once. Your staff always knows which table is free, occupied, or waiting for the bill — no confusion during a rush.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="160">
+          <div class="service-icon" style="--icon-color:#ec4899">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <h4>Menu — Always Up to Date</h4>
+          <p>Add new dishes, change prices, or mark something sold-out for the day — done in seconds from your phone. No printing new menus, no restarting the system.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="240">
+          <div class="service-icon" style="--icon-color:#a855f7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+          </div>
+          <h4>Billing & Payments</h4>
+          <p>UPI, cash, card — all in one bill. Split the bill between friends. Every bill is GST-correct and stored forever. Cashier closing takes two minutes at end of shift.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="0">
+          <div class="service-icon" style="--icon-color:#3b82f6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4>Kitchen Display Screen</h4>
+          <p>A screen in the kitchen shows every new order the moment the waiter confirms it. The chef marks it done when ready. No paper, no shouting, no delays.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="80">
+          <div class="service-icon" style="--icon-color:#14b8a6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h4>Customer Loyalty</h4>
+          <p>Customers earn points every visit. You reward them with discounts or a free dish. They feel valued. They come back. Their friends come too.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="160">
+          <div class="service-icon" style="--icon-color:#10b981">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <h4>Daily Reports & Insights</h4>
+          <p>See today's total collection, your best-selling dishes, and your busiest hours — in one glance. Monthly GST summary ready for your accountant whenever they need it.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="240">
+          <div class="service-icon" style="--icon-color:#1d4ed8">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h4>Stock & Ingredient Tracking</h4>
+          <p>Know exactly what's in your kitchen. When an ingredient gets low, BullBill alerts you before you run out mid-service. No more 86'd items that embarrass your staff.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="80">
+          <div class="service-icon" style="--icon-color:#f59e0b">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z M8 2v16 M16 6v16"/></svg>
+          </div>
+          <h4>Works Without Internet</h4>
+          <p>Internet down? No problem. BullBill keeps taking orders and printing bills. When the connection comes back, everything syncs in the background. You never lose a rupee.</p>
+        </div>
+      </div>
+
+      <div class="arch-diagram reveal delay-3">
+        <div class="arch-label">Everything talks to everything — automatically</div>
+        <div class="arch-bus">
+          <div class="bus-line"></div>
+          <div class="bus-pulse"></div>
+          <div class="bus-node" style="left:10%">orders</div>
+          <div class="bus-node" style="left:27%">billing</div>
+          <div class="bus-node" style="left:44%">kitchen</div>
+          <div class="bus-node" style="left:61%">customers</div>
+          <div class="bus-node" style="left:78%">reports</div>
+        </div>
+        <p class="arch-note">When a bill is settled, loyalty points are added, your stock updates, and your daily report refreshes — all in the background. You do nothing extra.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ──────────────────────────────────────────────────── -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Simple Plans</span>
+        <h2 class="section-title reveal delay-1">Pay per outlet, per month.<br /><span class="gradient-text">No hidden charges ever.</span></h2>
+        <p class="section-subtitle reveal delay-2">No setup fee. No annual lock-in. No commission on your sales. Cancel anytime. Up and running in 10 minutes.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card reveal" data-delay="0">
+          <div class="plan-header">
+            <span class="plan-name">Starter</span>
+            <div class="plan-price">
+              <span class="currency">₹</span>
+              <span class="amount">999</span>
+              <span class="period">/outlet/month</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Bills even without internet</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Proper GST bills, every time</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Kitchen display screen</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> UPI, cash & card payments</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> End-of-day cash summary</li>
+            <li class="muted"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg> Customer loyalty & rewards</li>
+            <li class="muted"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg> Sales reports & insights</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline plan-cta">Get Started Free</a>
+        </div>
+
+        <div class="pricing-card featured reveal" data-delay="150">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-header">
+            <span class="plan-name">Growth</span>
+            <div class="plan-price">
+              <span class="currency">₹</span>
+              <span class="amount">2,499</span>
+              <span class="period">/outlet/month</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Everything in Starter</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Customer loyalty & rewards</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Send offers & compliments</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Table & floor map</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Stock & ingredient alerts</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Sales reports & insights</li>
+            <li class="muted"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg> Multiple outlets</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary plan-cta">Try Free for 30 Days</a>
+        </div>
+
+        <div class="pricing-card reveal" data-delay="300">
+          <div class="plan-header">
+            <span class="plan-name">Chain</span>
+            <div class="plan-price">
+              <span class="amount" style="font-size:2rem;">Let's Talk</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Everything in Growth</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> All outlets in one dashboard</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Deep GST & tax reports</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Zomato & Swiggy orders in one screen</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Dedicated support team</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> We set everything up for you</li>
+            <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Custom features for your chain</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline plan-cta">Call Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY BULLBILL ──────────────────────────────────────────────── -->
+  <section class="why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content reveal">
+          <span class="section-tag">What Makes Us Different</span>
+          <h2 class="section-title">Reliable billing first.<br /><span class="gradient-text">Loyal customers next.</span></h2>
+          <p>You pick a billing app because it must never let you down. You recommend BullBill to your friends because it quietly brings your customers back — without you lifting a finger.</p>
+
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14z"/></svg>
+              </div>
+              <div>
+                <h4>Just a phone number at checkout</h4>
+                <p>No app for them to download, no card to carry. Ask for their number when they pay — they're enrolled. Points go up with every visit, automatically.</p>
+              </div>
+            </div>
+
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <h4>Send a compliment from your phone</h4>
+                <p>A loyal customer walks in for the 10th time? Tap to send them a free dessert — right from your phone, right now. They'll remember it for months.</p>
+              </div>
+            </div>
+
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div>
+                <h4>Win back customers who drifted away</h4>
+                <p>BullBill shows you customers who haven't visited in 30 days. Send them a special offer. Most of them come back — and they bring friends.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-visual reveal delay-2">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <div class="phone-logo-badge">
+                  <img src="assets/images/logo-icon.png" alt="BullBill" class="phone-logo" />
+                </div>
+                <span>BullBill POS</span>
+              </div>
+              <div class="phone-content">
+                <div class="phone-stat">
+                  <span class="ps-label">Today's Collection</span>
+                  <span class="ps-value">₹48,230</span>
+                  <span class="ps-change positive">+12% vs last week</span>
+                </div>
+                <div class="phone-stat">
+                  <span class="ps-label">Tables Right Now</span>
+                  <span class="ps-value">7 occupied / 12 total</span>
+                  <div class="table-dots">
+                    <span class="dot active"></span><span class="dot active"></span>
+                    <span class="dot active"></span><span class="dot active"></span>
+                    <span class="dot active"></span><span class="dot active"></span>
+                    <span class="dot active"></span><span class="dot empty"></span>
+                    <span class="dot empty"></span><span class="dot empty"></span>
+                    <span class="dot empty"></span><span class="dot empty"></span>
+                  </div>
+                </div>
+                <div class="phone-stat">
+                  <span class="ps-label">Repeat Customers</span>
+                  <span class="ps-value">342 regulars</span>
+                  <span class="ps-change positive">+18 enrolled today</span>
+                </div>
+                <div class="phone-offline-badge">
+                  <span class="offline-dot"></span>
+                  No internet — 3 bills saved, syncing soon
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA / CONTACT ──────────────────────────────────────────────── -->
+  <section class="cta-section" id="contact">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="cta-content reveal">
+        <div class="cta-logo-wrap">
+          <img src="assets/images/logo-icon.png" alt="BullBill" class="cta-logo" />
+        </div>
+        <h2>Ready to run your restaurant without the headaches?</h2>
+        <p>Set up in 10 minutes. No annual contract. No hidden charges. Try free for 30 days.</p>
+        <form class="cta-form" id="ctaForm">
+          <input type="email" placeholder="your@email.com" required />
+          <button type="submit" class="btn btn-primary">Get Early Access</button>
+        </form>
+        <p class="cta-note">Restaurants across India are already on the waitlist. Join them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="assets/images/logo-icon.png" alt="BullBill" class="footer-logo-icon" />
+            <span class="footer-wordmark">Bull<span>Bill</span></span>
+          </div>
+          <p>Restaurant billing made simple.<br />Works without internet. GST ready.<br /><em>Billing &bull; Business &bull; Growth</em></p>
+        </div>
+        <div class="footer-links">
+          <h5>For Restaurants</h5>
+          <ul>
+            <li><a href="#features">What You Get</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Plans & Pricing</a></li>
+            <li><a href="#contact">Try for Free</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="#">Help Centre</a></li>
+            <li><a href="#">WhatsApp Us</a></li>
+            <li><a href="#">GST Guide for Restaurants</a></li>
+            <li><a href="#">Training Videos</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BullBill Technologies. All rights reserved. Made for Indian restaurants.</p>
+        <p class="footer-stack">Billing &bull; Business &bull; Growth</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
