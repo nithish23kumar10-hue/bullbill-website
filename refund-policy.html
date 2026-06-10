@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refund Policy — BullBill</title>
+  <meta name="description" content="Refund Policy for BullBill — Billing App for Indian Restaurants." />
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .legal-page { padding: 120px 0 80px; min-height: 100vh; }
+    .legal-header { margin-bottom: 48px; }
+    .legal-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 12px; }
+    .legal-header p { color: var(--text-muted); font-size: 0.95rem; }
+    .legal-body h2 { font-size: 1.2rem; font-weight: 600; margin: 36px 0 12px; color: var(--accent); }
+    .legal-body p, .legal-body li { color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; font-size: 0.95rem; }
+    .legal-body ul { padding-left: 20px; }
+    .legal-body a { color: var(--primary-light); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 40px; transition: color 0.2s; }
+    .back-link:hover { color: var(--text); }
+    .legal-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .highlight-box { background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.25); border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+    .highlight-box p { margin: 0; color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">
+          <img src="assets/images/logo-icon.png" alt="BullBill" class="logo-img" />
+        </div>
+        <span class="logo-wordmark">Bull<span>Bill</span></span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <div class="container">
+      <a href="index.html" class="back-link">← Back to Home</a>
+
+      <div class="legal-header">
+        <h1>Refund <span class="gradient-text">Policy</span></h1>
+        <p>Last updated: June 10, 2026</p>
+      </div>
+
+      <div class="legal-body">
+        <div class="highlight-box">
+          <p>We want you to be completely satisfied with BullBill. If you are not happy with your subscription, contact us within 7 days of a charge and we will make it right.</p>
+        </div>
+
+        <hr class="legal-divider" />
+
+        <h2>1. Free Trial</h2>
+        <p>All new BullBill accounts come with a 30-day free trial. You will not be charged during this period. You can cancel before the trial ends with no cost whatsoever.</p>
+
+        <h2>2. Refund Eligibility</h2>
+        <p>You may request a full refund for your most recent monthly subscription charge if:</p>
+        <ul>
+          <li>You contact us within 7 days of the charge date.</li>
+          <li>You are requesting a refund for the first time on your account.</li>
+          <li>Your account has not been terminated for a violation of our <a href="terms-of-use.html">Terms of Use</a>.</li>
+        </ul>
+
+        <h2>3. How to Request a Refund</h2>
+        <p>Email us at <a href="mailto:support@bullbill.in">support@bullbill.in</a> with the subject line "Refund Request" and include:</p>
+        <ul>
+          <li>Your registered email address.</li>
+          <li>Your business name.</li>
+          <li>The reason for the refund request.</li>
+        </ul>
+        <p>We will respond within 2 business days and process approved refunds within 5–7 business days to your original payment method.</p>
+
+        <h2>4. Non-Refundable Situations</h2>
+        <ul>
+          <li>Refund requests made more than 7 days after the charge date.</li>
+          <li>Partial months — subscriptions are billed monthly and are not pro-rated.</li>
+          <li>Accounts terminated for Terms of Use violations.</li>
+          <li>Charges from previous billing cycles (only the most recent charge is eligible).</li>
+        </ul>
+
+        <h2>5. Cancellation</h2>
+        <p>You can cancel your subscription at any time from your account settings or by emailing us. Cancellation takes effect at the end of your current billing period — you will retain access until then. We do not charge cancellation fees.</p>
+
+        <h2>6. Contact</h2>
+        <p>For refund or cancellation queries, reach us at <a href="mailto:support@bullbill.in">support@bullbill.in</a> or through our <a href="contact.html">Contact page</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 BullBill Technologies. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>

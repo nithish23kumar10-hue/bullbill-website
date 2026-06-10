@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — BullBill</title>
+  <meta name="description" content="Get in touch with the BullBill team. We're here to help Indian restaurant owners." />
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .contact-page { padding: 120px 0 80px; min-height: 100vh; }
+    .contact-header { margin-bottom: 56px; }
+    .contact-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 12px; }
+    .contact-header p { color: var(--text-muted); font-size: 1rem; max-width: 500px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 40px; transition: color 0.2s; }
+    .back-link:hover { color: var(--text); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-methods { display: flex; flex-direction: column; gap: 20px; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; display: flex; gap: 16px; align-items: flex-start; transition: border-color 0.2s; }
+    .contact-card:hover { border-color: var(--border-hover); }
+    .contact-card-icon { width: 44px; height: 44px; background: rgba(37,99,235,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--primary-light); }
+    .contact-card-icon svg { width: 20px; height: 20px; }
+    .contact-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .contact-card p { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 8px; }
+    .contact-card a { color: var(--primary-light); font-size: 0.9rem; font-weight: 500; }
+    .contact-form-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; }
+    .contact-form-wrap h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px 14px; color: var(--text);
+      font-family: inherit; font-size: 0.9rem; transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: #0b1327; }
+    .form-submit { width: 100%; justify-content: center; font-size: 1rem; padding: 14px; }
+    .form-success { display: none; text-align: center; padding: 20px; color: #10b981; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">
+          <img src="assets/images/logo-icon.png" alt="BullBill" class="logo-img" />
+        </div>
+        <span class="logo-wordmark">Bull<span>Bill</span></span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="contact-page">
+    <div class="container">
+      <a href="index.html" class="back-link">← Back to Home</a>
+
+      <div class="contact-header">
+        <h1>Get in <span class="gradient-text">Touch</span></h1>
+        <p>Have a question about BullBill? Want a demo for your restaurant? We typically reply within a few hours.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-methods">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email Us</h4>
+              <p>For general enquiries, demos, and support</p>
+              <a href="mailto:support@bullbill.in">support@bullbill.in</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14z"/></svg>
+            </div>
+            <div>
+              <h4>WhatsApp Us</h4>
+              <p>Quick questions and live demo requests</p>
+              <a href="https://wa.me/919790589401" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Response Time</h4>
+              <p>We reply within 4 business hours on weekdays. For urgent support, use WhatsApp.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <h3>Send us a message</h3>
+          <form id="contactForm" action="https://formspree.io/f/mgobzgzw" method="POST">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Ravi Kumar" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">What's this about?</label>
+              <select id="subject" name="subject">
+                <option value="demo">I want a demo</option>
+                <option value="pricing">Pricing question</option>
+                <option value="support">Technical support</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your restaurant and what you need..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+            <div class="form-success" id="formSuccess">✓ Message sent! We'll get back to you soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 BullBill Technologies. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          document.getElementById('formSuccess').style.display = 'block';
+          btn.style.display = 'none';
+        } else {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          alert('Something went wrong. Please email us at support@bullbill.in');
+        }
+      } catch {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please email us at support@bullbill.in');
+      }
+    });
+  </script>
+</body>
+</html>

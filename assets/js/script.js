@@ -183,26 +183,36 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 })();
 
 /* ─── CTA FORM ────────────────────────────────────────────────────── */
-document.getElementById('ctaForm')?.addEventListener('submit', (e) => {
+document.getElementById('ctaForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const input = e.target.querySelector('input[type="email"]');
-  const btn = e.target.querySelector('button');
-  const email = input.value.trim();
+  const form = e.target;
+  const input = form.querySelector('input[type="email"]');
+  const btn = form.querySelector('button');
 
-  if (!email) return;
-
-  btn.textContent = '✓ You\'re on the list!';
-  btn.style.background = '#10b981';
+  btn.textContent = 'Submitting...';
   btn.disabled = true;
   input.disabled = true;
-  input.value = '';
 
-  setTimeout(() => {
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      btn.textContent = '✓ You\'re on the list!';
+      btn.style.background = '#10b981';
+      input.value = '';
+    } else {
+      throw new Error();
+    }
+  } catch {
     btn.textContent = 'Get Early Access';
     btn.style.background = '';
     btn.disabled = false;
     input.disabled = false;
-  }, 4000);
+    alert('Something went wrong. Please email us at support@bullbill.in');
+  }
 });
 
 /* ─── SMOOTH SCROLL FOR ANCHOR LINKS ───────────────────────────── */
