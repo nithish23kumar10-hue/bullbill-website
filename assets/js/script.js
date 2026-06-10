@@ -185,33 +185,33 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 /* ─── CTA FORM ────────────────────────────────────────────────────── */
 document.getElementById('ctaForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const form = e.target;
-  const input = form.querySelector('input[type="email"]');
-  const btn = form.querySelector('button');
+  const input = document.getElementById('ctaEmail');
+  const btn = document.getElementById('ctaBtn');
+  const note = document.getElementById('ctaNote');
+  const email = input.value.trim();
+  if (!email) return;
 
   btn.textContent = 'Submitting...';
   btn.disabled = true;
-  input.disabled = true;
 
   try {
-    const res = await fetch(form.action, {
+    const res = await fetch('https://formspree.io/f/mgobzgzw', {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify({ email }),
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
     });
     if (res.ok) {
+      input.value = '';
       btn.textContent = '✓ You\'re on the list!';
       btn.style.background = '#10b981';
-      input.value = '';
+      note.textContent = 'We\'ll be in touch soon. Thank you!';
     } else {
       throw new Error();
     }
   } catch {
     btn.textContent = 'Get Early Access';
-    btn.style.background = '';
     btn.disabled = false;
-    input.disabled = false;
-    alert('Something went wrong. Please email us at support@bullbill.in');
+    note.textContent = 'Something went wrong. Email us at support@bullbill.in';
   }
 });
 
