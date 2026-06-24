@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BullBill — Sales Brochure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0a1628;
+      --navy2:  #0d1e3a;
+      --blue:   #2563eb;
+      --blue2:  #3b82f6;
+      --gold:   #c8a84b;
+      --gold2:  #f0c96a;
+      --green:  #10b981;
+      --purple: #8b5cf6;
+      --orange: #ea580c;
+      --teal:   #14b8a6;
+      --pink:   #ec4899;
+      --sky:    #0ea5e9;
+      --lime:   #84cc16;
+      --red:    #dc2626;
+      --white:  #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #b0b0b0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page { size: A4 landscape; margin: 0; }
+
+    @media print {
+      body { background: white; }
+      .ui-bar, .page-label { display: none !important; }
+      .sheet { box-shadow: none; margin: 0; page-break-after: always; }
+      .sheet:last-child { page-break-after: avoid; }
+      .fold-line { border-right: none !important; }
+    }
+
+    /* ── screen chrome ───────────────────── */
+    .ui-bar {
+      background: #fff8e1; border-bottom: 2px solid var(--gold2);
+      padding: 12px 24px; text-align: center; font-size: 13px; color: #333;
+    }
+    .ui-bar strong { color: var(--navy); }
+    .print-btn {
+      display: inline-block; margin: 5px auto 0;
+      padding: 7px 22px; background: var(--navy); color: white;
+      border: none; border-radius: 6px; font-size: 13px;
+      font-weight: 700; cursor: pointer; font-family: inherit;
+    }
+    .page-label {
+      text-align: center; font-size: 11px; font-weight: 700; color: #555;
+      padding: 10px 0 4px; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    /* ── sheet ───────────────────────────── */
+    .sheet {
+      width: 297mm; height: 210mm;
+      display: flex; flex-direction: row;
+      margin: 0 auto 20px;
+      box-shadow: 0 6px 40px rgba(0,0,0,0.35);
+      overflow: hidden;
+    }
+    .panel {
+      width: 99mm; height: 210mm;
+      display: flex; flex-direction: column;
+      flex-shrink: 0; overflow: hidden; position: relative;
+    }
+    @media screen {
+      .fold-line { border-right: 1px dashed rgba(0,0,0,0.18); }
+    }
+
+    /* ── decorative helpers ──────────────── */
+    .blob {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; z-index: 0;
+    }
+    .dot-grid {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(37,99,235,0.13) 1.2px, transparent 1.2px);
+      background-size: 13px 13px;
+    }
+    .dot-grid-light {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 12px 12px;
+    }
+    .wm {
+      position: absolute; pointer-events: none; z-index: 0;
+      opacity: 0.04;
+    }
+    .panel > * { position: relative; z-index: 1; }
+
+    /* ════════════════════════════════════════
+       PANEL A — FRONT COVER
+    ════════════════════════════════════════ */
+    .p-front {
+      background: var(--navy);
+      align-items: center; justify-content: center;
+      padding: 16px 17px; text-align: center;
+    }
+    /* decorative rings */
+    .front-ring1 {
+      position: absolute; width: 220px; height: 220px;
+      border: 40px solid rgba(37,99,235,0.08);
+      border-radius: 50%; top: -60px; right: -60px;
+    }
+    .front-ring2 {
+      position: absolute; width: 150px; height: 150px;
+      border: 25px solid rgba(200,168,75,0.07);
+      border-radius: 50%; bottom: -40px; left: -40px;
+    }
+    .front-badge {
+      background: rgba(200,168,75,0.16);
+      border: 1px solid rgba(200,168,75,0.38);
+      color: var(--gold2); font-size: 6.5px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 3px 11px; border-radius: 20px; margin-bottom: 11px;
+    }
+    .front-logo-box {
+      width: 68px; height: 68px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px; border: 1px solid rgba(255,255,255,0.09);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 10px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.25);
+    }
+    .front-logo-box img { width: 56px; height: 56px; object-fit: contain; }
+    .front-brand {
+      font-size: 34px; font-weight: 900; letter-spacing: -1.5px; line-height: 1;
+      color: var(--white); margin-bottom: 3px;
+    }
+    .front-brand span { color: var(--gold); }
+    .front-tagline {
+      font-size: 7.5px; color: rgba(255,255,255,0.38);
+      letter-spacing: 2.5px; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 10px;
+    }
+    .front-rule {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--gold));
+      border-radius: 2px; margin: 0 auto 10px;
+    }
+    .front-headline {
+      font-size: 13px; font-weight: 800;
+      color: var(--white); line-height: 1.35; margin-bottom: 7px;
+    }
+    .front-sub {
+      font-size: 7.5px; color: rgba(255,255,255,0.38);
+      line-height: 1.6; margin-bottom: 10px;
+    }
+    .front-chips {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 4px; margin-bottom: 12px;
+    }
+    .chip {
+      background: rgba(37,99,235,0.18);
+      border: 1px solid rgba(37,99,235,0.32);
+      color: rgba(255,255,255,0.72);
+      font-size: 6px; font-weight: 600;
+      padding: 2.5px 7px; border-radius: 20px;
+    }
+    .front-cta {
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      color: white; font-size: 8px; font-weight: 700;
+      padding: 8px 20px; border-radius: 30px; margin-bottom: 7px;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.4);
+    }
+    .front-web { font-size: 7px; color: rgba(255,255,255,0.26); }
+    .front-web span { color: var(--gold); font-weight: 600; }
+
+    /* ════════════════════════════════════════
+       PANEL B — BACK COVER
+    ════════════════════════════════════════ */
+    .p-back {
+      background: #060d1c;
+      padding: 14px 14px; justify-content: space-between;
+    }
+    .back-header { text-align: center; margin-bottom: 9px; }
+    .back-header img { height: 38px; object-fit: contain; display: block; margin: 0 auto 5px; }
+    .back-sub {
+      font-size: 7px; color: rgba(255,255,255,0.28);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 9px; padding: 9px 10px; margin-bottom: 7px;
+    }
+    .contact-card-title {
+      font-size: 6.5px; font-weight: 700; color: var(--gold);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 7px;
+    }
+    .c-row { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
+    .c-row:last-child { margin-bottom: 0; }
+    .c-ico {
+      width: 24px; height: 24px;
+      background: rgba(37,99,235,0.18); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; flex-shrink: 0;
+    }
+    .c-lbl { font-size: 5.5px; color: rgba(255,255,255,0.26); margin-bottom: 1px; }
+    .c-val { font-size: 8px; font-weight: 600; color: var(--white); }
+    .qr-block { text-align: center; margin-bottom: 7px; }
+    .qr-img {
+      width: 66px; height: 66px; display: block;
+      margin: 0 auto 3px; border-radius: 6px;
+      background: white; padding: 3px;
+    }
+    .qr-lbl { font-size: 6px; color: rgba(255,255,255,0.26); }
+    .trial-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(200,168,75,0.08));
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 8px; padding: 8px 10px; margin-bottom: 7px; text-align: center;
+    }
+    .trial-box-t { font-size: 7.5px; font-weight: 800; color: var(--gold2); margin-bottom: 2px; }
+    .trial-box-p { font-size: 6.5px; color: rgba(255,255,255,0.36); line-height: 1.4; }
+    .back-footer {
+      font-size: 6px; color: rgba(255,255,255,0.14); text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05); padding-top: 6px;
+    }
+
+    /* ════════════════════════════════════════
+       PANEL C — INSIDE FLAP
+    ════════════════════════════════════════ */
+    .p-flap {
+      background: linear-gradient(160deg, #0d1e3a 0%, #07101f 100%);
+      padding: 14px 13px;
+    }
+    .flap-label {
+      font-size: 7px; font-weight: 700; color: var(--gold);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px;
+    }
+    .flap-title {
+      font-size: 13px; font-weight: 800; color: var(--white);
+      line-height: 1.28; margin-bottom: 10px;
+    }
+    .flap-title span { color: var(--gold); }
+    .why-list { display: flex; flex-direction: column; gap: 6px; }
+    .why-row {
+      display: flex; align-items: flex-start; gap: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px; padding: 6px 8px;
+      border-left: 2px solid rgba(200,168,75,0.35);
+    }
+    .why-ico {
+      width: 26px; height: 26px;
+      background: rgba(37,99,235,0.15);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
+    }
+    .why-h { font-size: 8px; font-weight: 700; color: var(--white); margin-bottom: 1px; }
+    .why-p { font-size: 6.5px; color: rgba(255,255,255,0.38); line-height: 1.35; }
+    .flap-stats {
+      display: flex; gap: 5px;
+      padding-top: 9px; margin-top: 9px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat {
+      flex: 1; background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.18);
+      border-radius: 7px; padding: 7px 3px; text-align: center;
+    }
+    .stat-n { font-size: 16px; font-weight: 900; color: var(--gold2); line-height: 1; margin-bottom: 2px; }
+    .stat-n small { font-size: 9px; }
+    .stat-t { font-size: 5.5px; color: rgba(255,255,255,0.32); line-height: 1.3; }
+
+    /* ════════════════════════════════════════
+       INSIDE PANELS — SHARED BASE
+    ════════════════════════════════════════ */
+    .p-in {
+      background: #eef2ff;
+      padding: 12px 12px;
+    }
+    .p-in-dark {
+      background: var(--navy);
+      padding: 12px 12px;
+    }
+
+    .in-header { text-align: center; margin-bottom: 7px; }
+    .in-tag {
+      display: inline-block; font-size: 6px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 2.5px 8px; border-radius: 20px; margin-bottom: 3px;
+    }
+    .tag-blue { background: rgba(37,99,235,0.12); color: var(--blue); }
+    .tag-gold { background: rgba(200,168,75,0.16); color: var(--gold2); }
+    .tag-green { background: rgba(16,185,129,0.12); color: #10b981; }
+
+    .in-title { font-size: 10.5px; font-weight: 800; line-height: 1.28; }
+    .col-dark  { color: var(--navy); }
+    .col-light { color: var(--white); }
+
+    /* ── feature card ──────────────────────── */
+    .feat-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 7px; }
+
+    .f-card {
+      display: flex; align-items: flex-start; gap: 7px;
+      padding: 6px 8px; border-radius: 8px;
+      border-left: 3px solid;
+    }
+    /* light panel cards */
+    .p-in .f-card {
+      background: var(--white);
+      box-shadow: 0 1px 4px rgba(37,99,235,0.07);
+    }
+    /* dark panel cards */
+    .p-in-dark .f-card {
+      background: rgba(255,255,255,0.05);
+      box-shadow: none;
+    }
+
+    /* per-color borders */
+    .bc-blue   { border-color: var(--blue); }
+    .bc-green  { border-color: var(--green); }
+    .bc-orange { border-color: var(--orange); }
+    .bc-purple { border-color: var(--purple); }
+    .bc-gold   { border-color: var(--gold); }
+    .bc-teal   { border-color: var(--teal); }
+    .bc-pink   { border-color: var(--pink); }
+    .bc-sky    { border-color: var(--sky); }
+    .bc-lime   { border-color: var(--lime); }
+    .bc-red    { border-color: var(--red); }
+    .bc-blue2  { border-color: var(--blue2); }
+
+    .f-ico {
+      width: 28px; height: 28px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0;
+    }
+    .ib   { background: rgba(37,99,235,0.12); }
+    .ig   { background: rgba(16,185,129,0.12); }
+    .io   { background: rgba(234,88,12,0.12); }
+    .ip   { background: rgba(139,92,246,0.12); }
+    .igold{ background: rgba(200,168,75,0.15); }
+    .it   { background: rgba(20,184,166,0.12); }
+    .ipk  { background: rgba(236,72,153,0.1); }
+    .isky { background: rgba(14,165,233,0.12); }
+    .ilime{ background: rgba(132,204,22,0.12); }
+    .ired { background: rgba(220,38,38,0.1); }
+    .ib2  { background: rgba(59,130,246,0.12); }
+
+    .f-body { flex: 1; min-width: 0; }
+    .f-h { font-size: 7.5px; font-weight: 700; margin-bottom: 1.5px; line-height: 1.2; }
+    .f-p { font-size: 6.5px; line-height: 1.38; }
+    .dark-text  .f-h { color: var(--navy); }
+    .dark-text  .f-p { color: #607090; }
+    .light-text .f-h { color: var(--white); }
+    .light-text .f-p { color: rgba(255,255,255,0.42); }
+
+    /* ── bottom strips ────────────────────── */
+    .strip { border-radius: 8px; padding: 8px 10px; text-align: center; margin-top: auto; }
+    .s-blue  { background: linear-gradient(135deg, var(--blue), #1d4ed8); }
+    .s-gold  { background: rgba(200,168,75,0.1); border: 1px solid rgba(200,168,75,0.22); }
+    .s-cta   { background: linear-gradient(135deg, var(--gold), #b8941f); }
+
+    .st-t { font-size: 8px; font-weight: 800; margin-bottom: 2px; }
+    .tw { color: var(--white); }
+    .tg { color: var(--gold2); }
+    .tn { color: var(--navy); }
+    .pw { color: rgba(255,255,255,0.6); }
+    .pg { color: rgba(255,255,255,0.36); }
+    .pn { color: rgba(10,22,40,0.58); }
+    .st-p { font-size: 6.5px; line-height: 1.4; }
+
+    .cta-url { font-size: 11px; font-weight: 900; color: var(--navy); margin: 4px 0 2px; }
+    .cta-pill {
+      display: inline-block;
+      background: rgba(10,22,40,0.12); border-radius: 20px;
+      font-size: 6.5px; font-weight: 700; color: var(--navy);
+      padding: 2.5px 10px; margin-top: 3px;
+    }
+
+    .mini-strip-row { display: flex; gap: 5px; margin-bottom: 6px; }
+    .mini-strip {
+      flex: 1; border-radius: 7px; padding: 7px 6px; text-align: center;
+      background: linear-gradient(135deg, #0e1e38, #07101f);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .ms-ico { font-size: 14px; margin-bottom: 2px; }
+    .ms-t   { font-size: 7px; font-weight: 800; color: var(--gold2); margin-bottom: 2px; }
+    .ms-p   { font-size: 6px; color: rgba(255,255,255,0.34); line-height: 1.35; }
+  </style>
+</head>
+<body>
+
+<div class="ui-bar">
+  <strong>How to print:</strong> A4 Landscape → Enable <strong>Background graphics</strong> → Print Sheet 1, flip on long edge, print Sheet 2 → Fold into 3 panels.
+  <br><button class="print-btn" onclick="window.print()">🖨️ Print Brochure</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SHEET 1 — OUTSIDE
+     [Flap C] | [Back B] | [Front A]
+══════════════════════════════════════════════ -->
+<div class="page-label">SHEET 1 — OUTSIDE &nbsp;|&nbsp; Print this side first</div>
+<div class="sheet">
+
+  <!-- ── Panel C: Inside Flap ── -->
+  <div class="panel p-flap fold-line">
+    <!-- decorative blobs -->
+    <div class="blob" style="width:140px;height:140px;background:radial-gradient(circle,rgba(37,99,235,0.14),transparent 70%);top:-50px;right:-50px;"></div>
+    <div class="blob" style="width:100px;height:100px;background:radial-gradient(circle,rgba(200,168,75,0.1),transparent 70%);bottom:-30px;left:-20px;"></div>
+    <div class="dot-grid-light"></div>
+
+    <div class="flap-label">Why BullBill?</div>
+    <div class="flap-title">Built for <span>Indian</span><br/>Restaurant Owners</div>
+
+    <div class="why-list">
+      <div class="why-row">
+        <div class="why-ico">⚡</div>
+        <div><div class="why-h">Bill in Seconds</div>
+        <div class="why-p">GST-compliant bills instantly — no training or complicated setup</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">📶</div>
+        <div><div class="why-h">Works Without Internet</div>
+        <div class="why-p">Never lose a sale — keeps billing even when the network is down</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">🇮🇳</div>
+        <div><div class="why-h">Made for India</div>
+        <div class="why-p">CGST, SGST, IGST &amp; UPI built in — follows Indian tax rules exactly</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">📱</div>
+        <div><div class="why-h">Android App — Always with You</div>
+        <div class="why-p">Full restaurant control from your phone, anytime and anywhere</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">🏢</div>
+        <div><div class="why-h">One App for All Branches</div>
+        <div class="why-p">Multiple outlets, one account — reports and billing unified</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">💰</div>
+        <div><div class="why-h">Know Your Profit Daily</div>
+        <div class="why-p">Sales vs expenses summary every night — know your exact profit</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">👨‍🍳</div>
+        <div><div class="why-h">Less Waste, More Profit</div>
+        <div class="why-p">Recipe-linked stock deduction automatically reduces wastage</div></div>
+      </div>
+      <div class="why-row">
+        <div class="why-ico">🔒</div>
+        <div><div class="why-h">Your Data is Fully Secure</div>
+        <div class="why-p">Fully isolated, encrypted data — no other business can access it</div></div>
+      </div>
+    </div>
+
+    <div class="flap-stats">
+      <div class="stat"><div class="stat-n">14</div><div class="stat-t">Day Free Trial</div></div>
+      <div class="stat"><div class="stat-n">1<small>min</small></div><div class="stat-t">Quick Setup</div></div>
+      <div class="stat"><div class="stat-n">24/7</div><div class="stat-t">Support</div></div>
+    </div>
+  </div>
+
+  <!-- ── Panel B: Back Cover ── -->
+  <div class="panel p-back fold-line">
+    <div class="blob" style="width:160px;height:160px;background:radial-gradient(circle,rgba(37,99,235,0.1),transparent 70%);top:-60px;right:-60px;"></div>
+    <div class="dot-grid-light"></div>
+    <!-- watermark logo -->
+    <img src="assets/images/app-icon.png" class="wm" style="width:140px;height:140px;bottom:10px;right:-10px;" alt="" />
+
+    <div class="back-header">
+      <img src="assets/images/gold-logo.png" alt="BullBill" />
+      <div class="back-sub">Billing · Business · Growth</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card-title">Get in Touch</div>
+      <div class="c-row">
+        <div class="c-ico">🌐</div>
+        <div><div class="c-lbl">Website</div><div class="c-val">www.bullbill.in</div></div>
+      </div>
+      <div class="c-row">
+        <div class="c-ico">✉️</div>
+        <div><div class="c-lbl">Email</div><div class="c-val">support@bullbill.in</div></div>
+      </div>
+      <div class="c-row">
+        <div class="c-ico">📱</div>
+        <div><div class="c-lbl">WhatsApp / Call</div><div class="c-val">+91 97905 89401</div></div>
+      </div>
+      <div class="c-row">
+        <div class="c-ico">📍</div>
+        <div><div class="c-lbl">Location</div><div class="c-val">Tiruchirappalli, Tamil Nadu</div></div>
+      </div>
+      <div class="c-row">
+        <div class="c-ico">▶️</div>
+        <div><div class="c-lbl">Download App</div><div class="c-val">Google Play Store</div></div>
+      </div>
+    </div>
+
+    <div class="qr-block">
+      <img class="qr-img" src="assets/images/qr-bullbill.svg" alt="Scan QR" />
+      <div class="qr-lbl">Scan to visit bullbill.in &amp; download app</div>
+    </div>
+
+    <div class="trial-box">
+      <div class="trial-box-t">✦ Free 14-Day Trial — No Credit Card ✦</div>
+      <div class="trial-box-p">Full access to every feature. Setup in under 1 minute. Cancel anytime.</div>
+    </div>
+
+    <div class="back-footer">© 2026 BullBill Technologies · Made with ❤️ in India</div>
+  </div>
+
+  <!-- ── Panel A: Front Cover ── -->
+  <div class="panel p-front">
+    <div class="front-ring1"></div>
+    <div class="front-ring2"></div>
+    <div class="blob" style="width:180px;height:180px;background:radial-gradient(circle,rgba(37,99,235,0.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+
+    <div class="front-badge">Restaurant Billing App</div>
+    <div class="front-logo-box">
+      <img src="assets/images/app-icon.png" alt="BullBill" />
+    </div>
+    <div class="front-brand">Bull<span>Bill</span></div>
+    <div class="front-tagline">Billing · Business · Growth</div>
+    <div class="front-rule"></div>
+    <div class="front-headline">The Smartest Billing App for Indian Restaurants</div>
+    <div class="front-sub">
+      GST Invoices · Table Orders · Kitchen Display<br/>
+      Inventory · Loyalty · Reports — All in One App
+    </div>
+    <div class="front-chips">
+      <span class="chip">GST Billing</span>
+      <span class="chip">KOT</span>
+      <span class="chip">Offline</span>
+      <span class="chip">Multi-Branch</span>
+      <span class="chip">QR Order</span>
+      <span class="chip">Inventory</span>
+      <span class="chip">Loyalty</span>
+      <span class="chip">Reports</span>
+      <span class="chip">Staff Mgmt</span>
+      <span class="chip">Receipts</span>
+    </div>
+    <div class="front-cta">Start Free Trial — No Credit Card</div>
+    <div class="front-web">Visit <span>www.bullbill.in</span></div>
+  </div>
+
+</div><!-- /sheet 1 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SHEET 2 — INSIDE
+     [Panel D] | [Panel E] | [Panel F]
+══════════════════════════════════════════════ -->
+<div class="page-label">SHEET 2 — INSIDE &nbsp;|&nbsp; Flip and print this side</div>
+<div class="sheet">
+
+  <!-- ── Panel D: Billing & Ordering ── -->
+  <div class="panel p-in fold-line">
+    <div class="dot-grid"></div>
+    <div class="blob" style="width:120px;height:120px;background:radial-gradient(circle,rgba(37,99,235,0.1),transparent 70%);top:-40px;right:-30px;"></div>
+    <!-- logo watermark -->
+    <img src="assets/images/app-icon.png" class="wm" style="width:110px;height:110px;bottom:50px;right:-10px;opacity:0.06;" alt="" />
+
+    <div class="in-header">
+      <div class="in-tag tag-blue">Billing &amp; Ordering</div>
+      <div class="in-title col-dark">Complete Billing Solution</div>
+    </div>
+
+    <div class="feat-list dark-text">
+      <div class="f-card bc-blue">
+        <div class="f-ico ib">🧾</div>
+        <div class="f-body"><div class="f-h">Instant GST Billing</div>
+        <div class="f-p">Auto-calculates CGST, SGST &amp; IGST. Compliant bill in seconds.</div></div>
+      </div>
+      <div class="f-card bc-green">
+        <div class="f-ico ig">🍽️</div>
+        <div class="f-body"><div class="f-h">Table Management</div>
+        <div class="f-p">Live table status, occupancy tracking, merge &amp; split bills.</div></div>
+      </div>
+      <div class="f-card bc-orange">
+        <div class="f-ico io">🔔</div>
+        <div class="f-body"><div class="f-h">Kitchen Order Tickets (KOT)</div>
+        <div class="f-p">Orders sent directly to kitchen — no lost slips, no shouting.</div></div>
+      </div>
+      <div class="f-card bc-purple">
+        <div class="f-ico ip">📲</div>
+        <div class="f-body"><div class="f-h">QR Menu &amp; Self Ordering</div>
+        <div class="f-p">Customers scan, browse &amp; place orders from their own phone.</div></div>
+      </div>
+      <div class="f-card bc-teal">
+        <div class="f-ico it">🖨️</div>
+        <div class="f-body"><div class="f-h">Custom Branded Receipts</div>
+        <div class="f-p">Your logo, name &amp; footer. Bluetooth &amp; LAN thermal print.</div></div>
+      </div>
+      <div class="f-card bc-sky">
+        <div class="f-ico isky">💳</div>
+        <div class="f-body"><div class="f-h">Multiple Payment Modes</div>
+        <div class="f-p">Cash, UPI, card, wallet &amp; split payments — all auto-tracked.</div></div>
+      </div>
+      <div class="f-card bc-pink">
+        <div class="f-ico ipk">🛵</div>
+        <div class="f-body"><div class="f-h">Takeaway &amp; Delivery Orders</div>
+        <div class="f-p">Manage dine-in, takeaway &amp; delivery from one single screen.</div></div>
+      </div>
+      <div class="f-card bc-gold">
+        <div class="f-ico igold">🏷️</div>
+        <div class="f-body"><div class="f-h">Discounts &amp; Coupons</div>
+        <div class="f-p">Item-level &amp; bill-level discounts. Create custom coupon codes.</div></div>
+      </div>
+      <div class="f-card bc-lime">
+        <div class="f-ico ilime">🍕</div>
+        <div class="f-body"><div class="f-h">Menu &amp; Category Management</div>
+        <div class="f-p">Add items, set prices, create categories &amp; manage variants.</div></div>
+      </div>
+      <div class="f-card bc-blue2">
+        <div class="f-ico ib2">⏸️</div>
+        <div class="f-body"><div class="f-h">Hold &amp; Recall Orders</div>
+        <div class="f-p">Park an order, serve another table, come back to it anytime.</div></div>
+      </div>
+    </div>
+
+    <div class="strip s-blue">
+      <div class="st-t tw">Works on Any Android Phone or Tablet</div>
+      <div class="st-p pw">No costly hardware — BullBill runs on any Android device</div>
+    </div>
+  </div>
+
+  <!-- ── Panel E: Operations & Management ── -->
+  <div class="panel p-in-dark fold-line">
+    <div class="blob" style="width:160px;height:160px;background:radial-gradient(circle,rgba(200,168,75,0.1),transparent 70%);top:-50px;right:-50px;"></div>
+    <div class="blob" style="width:120px;height:120px;background:radial-gradient(circle,rgba(37,99,235,0.1),transparent 70%);bottom:-40px;left:-30px;"></div>
+    <div class="dot-grid-light"></div>
+    <img src="assets/images/gold-logo.png" class="wm" style="width:120px;bottom:55px;right:5px;opacity:0.05;" alt="" />
+
+    <div class="in-header">
+      <div class="in-tag tag-gold">Operations &amp; Management</div>
+      <div class="in-title col-light">Run Your Entire Restaurant</div>
+    </div>
+
+    <div class="feat-list light-text">
+      <div class="f-card bc-blue">
+        <div class="f-ico ib">👥</div>
+        <div class="f-body"><div class="f-h">Staff Management &amp; Roles</div>
+        <div class="f-p">Add staff, assign cashier/waiter/manager roles, control access.</div></div>
+      </div>
+      <div class="f-card bc-green">
+        <div class="f-ico ig">📦</div>
+        <div class="f-body"><div class="f-h">Inventory &amp; Stock Control</div>
+        <div class="f-p">Track all ingredients, get low-stock alerts &amp; reduce wastage.</div></div>
+      </div>
+      <div class="f-card bc-gold">
+        <div class="f-ico igold">📋</div>
+        <div class="f-body"><div class="f-h">Recipe Management</div>
+        <div class="f-p">Link menu items to recipes. Stock auto-deducts on every order.</div></div>
+      </div>
+      <div class="f-card bc-pink">
+        <div class="f-ico ipk">❤️</div>
+        <div class="f-body"><div class="f-h">Loyalty Program &amp; CRM</div>
+        <div class="f-p">Reward points, customer history &amp; repeat visit tracking.</div></div>
+      </div>
+      <div class="f-card bc-purple">
+        <div class="f-ico ip">🏢</div>
+        <div class="f-body"><div class="f-h">Multi-Branch Management</div>
+        <div class="f-p">All outlets, one account — billing, staff &amp; reports unified.</div></div>
+      </div>
+      <div class="f-card bc-orange">
+        <div class="f-ico io">💸</div>
+        <div class="f-body"><div class="f-h">Expense Tracking</div>
+        <div class="f-p">Log daily expenses. Compare your cost vs revenue in real time.</div></div>
+      </div>
+      <div class="f-card bc-sky">
+        <div class="f-ico isky">🚚</div>
+        <div class="f-body"><div class="f-h">Supplier &amp; Vendor Management</div>
+        <div class="f-p">Manage vendors, raise purchase orders &amp; track payment history.</div></div>
+      </div>
+      <div class="f-card bc-lime">
+        <div class="f-ico ilime">♻️</div>
+        <div class="f-body"><div class="f-h">Waste &amp; Spoilage Tracking</div>
+        <div class="f-p">Log wastage entries, reduce ingredient loss &amp; improve margins.</div></div>
+      </div>
+      <div class="f-card bc-teal">
+        <div class="f-ico it">👤</div>
+        <div class="f-body"><div class="f-h">Customer Database</div>
+        <div class="f-p">Store customer details, full order history &amp; preferences.</div></div>
+      </div>
+      <div class="f-card bc-red">
+        <div class="f-ico ired">🔑</div>
+        <div class="f-body"><div class="f-h">Role-Based Access Control</div>
+        <div class="f-p">Restrict cashiers, managers &amp; owners to only their own views.</div></div>
+      </div>
+    </div>
+
+    <div class="strip s-gold">
+      <div class="st-t tg">Dine-in · Takeaway · Cloud Kitchen · Café · Bakery</div>
+      <div class="st-p pg">BullBill adapts to every type of food business in India</div>
+    </div>
+  </div>
+
+  <!-- ── Panel F: Reports, Offline, CTA ── -->
+  <div class="panel p-in">
+    <div class="dot-grid"></div>
+    <div class="blob" style="width:130px;height:130px;background:radial-gradient(circle,rgba(200,168,75,0.12),transparent 70%);top:-40px;right:-40px;"></div>
+    <img src="assets/images/app-icon.png" class="wm" style="width:100px;height:100px;bottom:90px;right:0px;opacity:0.06;" alt="" />
+
+    <div class="in-header">
+      <div class="in-tag tag-green">Reports &amp; Analytics</div>
+      <div class="in-title col-dark">Know Your Numbers, Grow Faster</div>
+    </div>
+
+    <div class="feat-list dark-text">
+      <div class="f-card bc-blue">
+        <div class="f-ico ib">📊</div>
+        <div class="f-body"><div class="f-h">Advanced Sales Reports</div>
+        <div class="f-p">Daily, weekly &amp; monthly. Best-selling items at a glance.</div></div>
+      </div>
+      <div class="f-card bc-green">
+        <div class="f-ico ig">🧮</div>
+        <div class="f-body"><div class="f-h">GST Reports &amp; Tax Filing</div>
+        <div class="f-p">Export GST-ready reports in one click. No CA needed.</div></div>
+      </div>
+      <div class="f-card bc-orange">
+        <div class="f-ico io">👨‍💼</div>
+        <div class="f-body"><div class="f-h">Staff Performance Reports</div>
+        <div class="f-p">Collections per staff, shift summary &amp; top performer tracking.</div></div>
+      </div>
+      <div class="f-card bc-purple">
+        <div class="f-ico ip">👥</div>
+        <div class="f-body"><div class="f-h">Customer Visit Analytics</div>
+        <div class="f-p">Repeat visits, spending patterns &amp; loyalty programme trends.</div></div>
+      </div>
+      <div class="f-card bc-gold">
+        <div class="f-ico igold">💰</div>
+        <div class="f-body"><div class="f-h">Profit &amp; Loss Summary</div>
+        <div class="f-p">Sales vs expenses every day — know your exact profit tonight.</div></div>
+      </div>
+      <div class="f-card bc-sky">
+        <div class="f-ico isky">🏧</div>
+        <div class="f-body"><div class="f-h">Daily Cash Settlement</div>
+        <div class="f-p">End-of-day cash drawer vs system total reconciliation report.</div></div>
+      </div>
+      <div class="f-card bc-lime">
+        <div class="f-ico ilime">📦</div>
+        <div class="f-body"><div class="f-h">Inventory &amp; Stock Reports</div>
+        <div class="f-p">Current levels, daily consumption, reorder alerts &amp; wastage.</div></div>
+      </div>
+      <div class="f-card bc-red">
+        <div class="f-ico ired">🧾</div>
+        <div class="f-body"><div class="f-h">Expense &amp; Purchase Reports</div>
+        <div class="f-p">Full cost history — expenses, purchases &amp; vendor payments.</div></div>
+      </div>
+    </div>
+
+    <div class="mini-strip-row">
+      <div class="mini-strip">
+        <div class="ms-ico">📶</div>
+        <div class="ms-t">100% Offline</div>
+        <div class="ms-p">Bills without internet. Auto-sync when back online.</div>
+      </div>
+      <div class="mini-strip">
+        <div class="ms-ico">☁️</div>
+        <div class="ms-t">Cloud Backup</div>
+        <div class="ms-p">Data backed up securely. Never lose your records.</div>
+      </div>
+    </div>
+
+    <div class="strip s-cta">
+      <div class="st-t tn">Start Free — No Credit Card Needed</div>
+      <div class="st-p pn">14-day trial · All features included · Setup in 1 minute</div>
+      <div class="cta-url">www.bullbill.in</div>
+      <div class="cta-pill">📱 Download on Google Play</div>
+    </div>
+  </div>
+
+</div><!-- /sheet 2 -->
+
+</body>
+</html>
