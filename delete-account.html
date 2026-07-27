@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your Account & Data — BullBill</title>
+  <meta name="description" content="How to request deletion of your BullBill account and associated data." />
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .legal-page { padding: 120px 0 80px; min-height: 100vh; }
+    .legal-header { margin-bottom: 48px; }
+    .legal-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 12px; }
+    .legal-header p { color: var(--text-muted); font-size: 0.95rem; }
+    .legal-body h2 { font-size: 1.2rem; font-weight: 600; margin: 36px 0 12px; color: var(--accent); }
+    .legal-body p, .legal-body li { color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; font-size: 0.95rem; }
+    .legal-body ul, .legal-body ol { padding-left: 20px; }
+    .legal-body a { color: var(--primary-light); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 40px; transition: color 0.2s; }
+    .back-link:hover { color: var(--text); }
+    .legal-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">
+          <img src="assets/images/logo-icon.png" alt="BullBill" class="logo-img" />
+        </div>
+        <span class="logo-wordmark">Bull<span>Bill</span></span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <div class="container">
+      <a href="index.html" class="back-link">← Back to Home</a>
+
+      <div class="legal-header">
+        <h1>Delete Your Account <span class="gradient-text">& Data</span></h1>
+        <p>Last updated: July 28, 2026</p>
+      </div>
+
+      <div class="legal-body">
+        <p>This page explains how to request deletion of your BullBill account and the data associated with it, for restaurant owners, staff, and other users of the BullBill app and website at <a href="https://bullbill.in">bullbill.in</a>.</p>
+
+        <hr class="legal-divider" />
+
+        <h2>1. How to Request Deletion</h2>
+        <p>To request that your BullBill account and associated data be deleted, email us at <a href="mailto:support@bullbill.in">support@bullbill.in</a> from the email address registered on your account, and include:</p>
+        <ol>
+          <li>Your registered name, email address, and/or phone number</li>
+          <li>Your restaurant/business name (if applicable)</li>
+          <li>A statement that you want your account and data deleted</li>
+        </ol>
+        <p>We will verify your identity, confirm the request, and process it within 30 days.</p>
+
+        <h2>2. What Gets Deleted</h2>
+        <p>Once your request is verified, we delete:</p>
+        <ul>
+          <li>Your account profile (name, email address, phone number, login credentials)</li>
+          <li>Your restaurant/business profile, menu items, and menu photos</li>
+          <li>Staff accounts associated with your business, if you are the shop owner</li>
+        </ul>
+
+        <h2>3. What May Be Retained</h2>
+        <p>Some data is retained for a limited period after account deletion, where required for legitimate business, legal, or accounting purposes:</p>
+        <ul>
+          <li><strong>Order and billing records:</strong> Retained for up to 12 months after account closure, in line with GST/tax record-keeping requirements, then deleted.</li>
+          <li><strong>Payment transaction records:</strong> Payment processing itself is handled by our payment partner (Razorpay); BullBill does not store full card or bank details. Transaction references may be retained as required by financial regulations.</li>
+          <li><strong>Records required by law:</strong> Any data we are legally required to retain (e.g. for tax audits) will be kept only as long as legally required, then deleted.</li>
+        </ul>
+
+        <h2>4. Deleting Specific Data Without Closing Your Account</h2>
+        <p>If you'd like to delete specific data (for example, menu photos) without closing your whole account, email <a href="mailto:support@bullbill.in">support@bullbill.in</a> describing what you'd like removed, and we'll action it within 30 days.</p>
+
+        <h2>5. Contact Us</h2>
+        <p>For any questions about this process, contact us at:</p>
+        <ul>
+          <li>Email: <a href="mailto:support@bullbill.in">support@bullbill.in</a></li>
+          <li>Website: <a href="https://bullbill.in">bullbill.in</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 BullBill Technologies. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>
