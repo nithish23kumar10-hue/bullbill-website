@@ -182,6 +182,35 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   cards.forEach(c => observer.observe(c));
 })();
 
+/* ─── BOOK A DEMO FORM ──────────────────────────────────────────────── */
+document.getElementById('demoForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const success = document.getElementById('demoFormSuccess');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.reset();
+      success.style.display = 'block';
+      btn.style.display = 'none';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    btn.textContent = 'Book My Demo';
+    btn.disabled = false;
+    alert('Something went wrong. Please email us at support@bullbill.in or WhatsApp us.');
+  }
+});
+
 /* ─── CTA FORM ────────────────────────────────────────────────────── */
 document.getElementById('ctaForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();

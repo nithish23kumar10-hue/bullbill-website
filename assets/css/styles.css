@@ -117,15 +117,78 @@ a { text-decoration: none; color: inherit; }
 .btn-ghost:hover { color: var(--text); }
 .btn-lg { padding: 16px 32px; font-size: 1rem; }
 
+/* ─── TRIAL / ANNOUNCEMENT BAR ──────────────────────────────────────
+   Pre-existing markup had no CSS at all, so it rendered unstyled and
+   sat directly under the fixed navbar at the same top:0 position —
+   the two visually collided and the navbar intercepted clicks meant
+   for this bar's own link (and vice versa). Fixed by giving it a real
+   slim bar above the navbar, with the navbar pushed down to match. */
+.trial-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1100;
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary-light));
+  padding: 9px 44px 9px 16px;
+}
+
+.trial-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.trial-bar-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.trial-bar-link {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.trial-bar-close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.8rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+}
+
+.trial-bar-close:hover { color: #fff; }
+
 /* ─── NAVBAR ────────────────────────────────────────────────────── */
 .navbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 38px; left: 0; right: 0;
   z-index: 1000;
   padding: 14px 0;
-  transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition);
+  transition: background var(--transition), border-color var(--transition), backdrop-filter var(--transition), top var(--transition);
   border-bottom: 1px solid transparent;
 }
+
+/* When the trial bar is dismissed, JS sets this class on <body> so the
+   navbar reclaims the top of the viewport instead of leaving a gap. */
+body.trial-bar-dismissed .navbar { top: 0; }
 
 .navbar.scrolled {
   background: rgba(7,11,24,0.92);
@@ -1714,4 +1777,435 @@ section { padding: 100px 0; }
   .trust-badges { gap: 12px; }
   .whatsapp-float-label { display: none; }
   .whatsapp-float { padding: 14px; border-radius: 50%; }
+
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ROLES / PERSONAS SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+.roles-section { background: var(--bg); }
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.role-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.role-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.role-card-highlight {
+  border-color: rgba(16,185,129,0.35);
+  background: rgba(16,185,129,0.05);
+}
+
+.role-card-highlight:hover { border-color: rgba(16,185,129,0.55); }
+
+.role-icon {
+  width: 44px; height: 44px;
+  color: var(--icon-color, var(--primary-light));
+  background: color-mix(in srgb, var(--icon-color, var(--primary-light)) 12%, transparent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.role-icon svg { width: 22px; height: 22px; }
+
+.role-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.role-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+.role-card p a { color: var(--primary-light); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DISTRIBUTOR PROGRAM SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+.distributor-section { background: var(--bg-2); }
+
+.distributor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.distributor-content .section-tag { margin-bottom: 16px; }
+.distributor-content .section-title { text-align: left; margin-bottom: 20px; }
+.distributor-content > p { color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; }
+
+.distributor-visual { display: flex; justify-content: center; }
+
+/* ─── GENERIC "MOCK WINDOW" — used for dashboard/distributor mockups ─── */
+.mock-window {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow), var(--shadow-glow);
+}
+
+.mock-window-wide { max-width: 620px; }
+
+.mock-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+
+.mock-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--border-hover);
+}
+
+.mock-window-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.mock-window-body { padding: 20px; }
+
+.mock-stat-row { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+
+.mock-stat {
+  flex: 1;
+  min-width: 110px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.mock-stat-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.mock-stat-value {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.mock-list { display: flex; flex-direction: column; gap: 8px; }
+
+.mock-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+}
+
+.mock-list-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border-hover);
+  flex-shrink: 0;
+}
+
+.mock-list-dot.on {
+  background: #34d399;
+  box-shadow: 0 0 6px rgba(52,211,153,0.6);
+}
+
+.mock-list-name { flex: 1; font-weight: 600; }
+
+.mock-list-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #34d399;
+  background: rgba(52,211,153,0.1);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.mock-list-tag.pending {
+  color: #fbbf24;
+  background: rgba(251,191,36,0.1);
+}
+
+.mock-qr-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.mock-qr-icon {
+  width: 32px; height: 32px;
+  color: var(--primary-light);
+  flex-shrink: 0;
+}
+
+.mock-qr-icon svg { width: 100%; height: 100%; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SHOWCASE SECTION (Web + Android)
+   ═══════════════════════════════════════════════════════════════════ */
+.showcase-section { background: var(--bg-2); }
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.showcase-item { display: flex; flex-direction: column; align-items: center; }
+
+.showcase-caption {
+  margin-top: 18px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Dashboard mockup — sidebar + main */
+.mock-dashboard { display: flex; gap: 16px; padding: 0; }
+
+.mock-sidebar {
+  width: 130px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.02);
+  border-right: 1px solid var(--border);
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mock-side-item {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.mock-side-item.active {
+  background: rgba(37,99,235,0.15);
+  color: var(--primary-light);
+  font-weight: 700;
+}
+
+.mock-main { flex: 1; padding: 16px 16px 16px 0; min-width: 0; }
+
+.mock-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 90px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.mock-bar {
+  flex: 1;
+  background: linear-gradient(180deg, var(--primary-light), var(--primary-dark));
+  border-radius: 3px 3px 0 0;
+  min-height: 6px;
+}
+
+/* Two stacked phone mockups for the Android showcase — normal document flow
+   with a negative margin to create the overlap, so the browser sizes the
+   container from real content height instead of a guessed fixed height
+   (a fixed-height + position:absolute version of this previously let the
+   second phone visually collide with the caption below it). */
+.showcase-phones {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.phone-mockup-sm {
+  width: 200px;
+  animation: none;
+}
+
+.phone-mockup-sm .phone-screen { min-height: 260px; padding: 14px; }
+.phone-mockup-sm .phone-header { margin-bottom: 14px; padding-bottom: 10px; }
+.phone-mockup-sm .phone-header span { font-size: 0.72rem; }
+
+.phone-mockup-offset {
+  margin-top: -70px;
+  margin-left: 100px;
+  z-index: 2;
+  box-shadow: -20px 20px 50px rgba(0,0,0,0.5), var(--shadow-glow);
+}
+
+.phone-mockup-center { animation: none; }
+
+.kot-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.kot-table { font-size: 0.68rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.04em; }
+.kot-item { font-size: 0.78rem; font-weight: 600; }
+
+.kot-status {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 2px 7px;
+  margin-top: 2px;
+}
+
+.kot-status.prep { color: #fbbf24; background: rgba(251,191,36,0.12); }
+.kot-status.ready { color: #34d399; background: rgba(52,211,153,0.12); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOOK A DEMO SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+.demo-section { background: var(--bg); }
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.demo-content .section-tag { margin-bottom: 16px; }
+.demo-content .section-title { text-align: left; margin-bottom: 20px; }
+.demo-content > p { color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+
+.demo-points { display: flex; flex-direction: column; gap: 16px; }
+
+.demo-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.demo-point svg {
+  width: 18px; height: 18px;
+  color: #34d399;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.demo-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.demo-form-wrap .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.demo-form-wrap .form-group { margin-bottom: 18px; }
+
+.demo-form-wrap .form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.demo-form-wrap .form-group input,
+.demo-form-wrap .form-group select,
+.demo-form-wrap .form-group textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.demo-form-wrap .form-group input:focus,
+.demo-form-wrap .form-group select:focus,
+.demo-form-wrap .form-group textarea:focus { border-color: var(--primary); }
+
+.demo-form-wrap .form-group textarea { resize: vertical; min-height: 90px; }
+.demo-form-wrap .form-group select option { background: #0b1327; }
+
+.demo-form-wrap .form-submit { width: 100%; justify-content: center; font-size: 1rem; padding: 14px; margin-top: 4px; }
+
+.demo-form-wrap .form-success {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE — ROLES / DISTRIBUTOR / SHOWCASE / DEMO
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .roles-grid { grid-template-columns: repeat(2, 1fr); }
+  .distributor-grid { grid-template-columns: 1fr; gap: 48px; }
+  .showcase-grid { grid-template-columns: 1fr; gap: 56px; }
+  .demo-grid { grid-template-columns: 1fr; gap: 40px; }
+  .demo-form-wrap .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .roles-grid { grid-template-columns: 1fr; }
+  .mock-window-wide { max-width: 100%; }
+  .mock-dashboard { flex-direction: column; }
+  .mock-sidebar { width: 100%; flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .showcase-phones { max-width: 100%; align-items: center; gap: 20px; }
+  .phone-mockup-sm { width: 100%; max-width: 260px; }
+  .phone-mockup-offset { margin-top: 0; margin-left: 0; box-shadow: var(--shadow), var(--shadow-glow); }
+  .demo-form-wrap { padding: 22px; }
 }
