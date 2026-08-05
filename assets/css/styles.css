@@ -2,29 +2,43 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* BullBill Brand Colors extracted from logo:
-     Bull body / brand bg  → deep navy  #0a1628
-     Receipt / "Bill" text → royal blue #2557e0
-     Bright accent         → #3b82f6    */
-  --bg:          #070b18;   /* deepest dark navy */
-  --bg-2:        #0b1327;   /* section alternate */
-  --bg-3:        #0f1c38;   /* card / footer */
+  /* BullBill Brand Colors */
+  --bg:          #070b18;
+  --bg-2:        #0b1327;
+  --bg-3:        #0f1c38;
   --surface:     rgba(255,255,255,0.04);
   --surface-hover: rgba(37,99,235,0.07);
   --border:      rgba(255,255,255,0.08);
   --border-hover: rgba(37,99,235,0.35);
 
-  /* Primary = royal blue matching logo's "Bill" and receipt element */
   --primary:       #2563eb;
   --primary-light: #3b82f6;
   --primary-dark:  #1d4ed8;
   --primary-glow:  rgba(37,99,235,0.35);
 
-  --accent:        #60a5fa;  /* sky blue for subtle highlights */
-  --navy:          #0a1628;  /* bull body dark navy */
+  --accent:        #60a5fa;
+  --navy:          #0a1628;
 
-  --text:       #e8eeff;     /* blue-tinted white */
-  --text-muted: #6e82a8;     /* blue-gray muted */
+  /* Semantic colors (WB new tokens) */
+  --success:    #10b981;
+  --warning:    #f59e0b;
+  --error:      #ef4444;
+  --wa-green:   #25d366;
+
+  --text:       #e8eeff;
+  --text-muted: #6e82a8;
+
+  /* Typography scale */
+  --text-xs:   0.72rem;
+  --text-sm:   0.85rem;
+  --text-base: 0.92rem;
+
+  /* Spacing scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
 
   --radius:    16px;
   --radius-sm: 8px;
@@ -162,7 +176,7 @@ a { text-decoration: none; color: inherit; }
 
 .trial-bar-close {
   position: absolute;
-  right: 12px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -171,7 +185,13 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.8rem;
   cursor: pointer;
   line-height: 1;
-  padding: 6px;
+  /* WB-01: min 44×44px tap target */
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .trial-bar-close:hover { color: #fff; }
@@ -268,6 +288,9 @@ body.trial-bar-dismissed .navbar { top: 0; }
 
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { width: 100%; }
+/* WB-07: Active section indicator */
+.nav-links a.nav-active { color: var(--primary-light); }
+.nav-links a.nav-active::after { width: 100%; }
 
 .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 
@@ -278,7 +301,12 @@ body.trial-bar-dismissed .navbar { top: 0; }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  /* WB-06: min 44×44px tap target */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-toggle span {
@@ -659,7 +687,8 @@ section { padding: 100px 0; }
 
 .feature-icon {
   width: 56px; height: 56px;
-  color: var(--primary-light);
+  /* WB-12: Per-card color via --icon-color; fallback to primary-light */
+  color: var(--icon-color, var(--primary-light));
   margin-bottom: 20px;
   transition: transform var(--transition);
 }
@@ -682,9 +711,12 @@ section { padding: 100px 0; }
 
 .feature-tag {
   display: inline-block;
-  background: rgba(37,99,235,0.1);
+  /* WB-12: tinted bg using per-card icon color */
+  background: color-mix(in srgb, var(--icon-color, var(--primary-light)) 12%, transparent);
+  background: rgba(37,99,235,0.1); /* fallback for old browsers */
   color: var(--accent);
-  font-size: 0.68rem;
+  /* WB-13: bump to 0.75rem for WCAG AA contrast */
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -807,6 +839,8 @@ section { padding: 100px 0; }
   display: flex;
   flex-direction: column;
   gap: 12px;
+  /* WB-16: clip rotated icon within card boundary */
+  overflow: hidden;
 }
 
 .service-card:hover {
@@ -818,12 +852,15 @@ section { padding: 100px 0; }
 .service-icon {
   width: 44px; height: 44px;
   border-radius: var(--radius-sm);
+  /* WB-15: color-mix() fallback for older WebView */
+  background: rgba(37,99,235,0.12);
   background: color-mix(in srgb, var(--icon-color) 15%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--icon-color);
   transition: transform var(--transition);
+  flex-shrink: 0;
 }
 
 .service-card:hover .service-icon { transform: scale(1.1) rotate(-5deg); }
@@ -910,7 +947,7 @@ section { padding: 100px 0; }
 
 .arch-note { margin-top: 24px; font-size: 0.82rem; color: var(--text-muted); }
 
-/* ─── PRICING ───────────────────────────────────────────────────── */
+/* ─── PRICING (CSS retained — HTML section to be added) ─────────── */
 .pricing { background: var(--bg); }
 
 .pricing-grid {
@@ -1254,11 +1291,7 @@ section { padding: 100px 0; }
   margin-bottom: 16px;
 }
 
-.footer-logo-icon-wrap {
-  background: #fff;
-  border-radius: 8px;
-  padding: 4px 6px;
-}
+/* WB-29: .footer-logo-icon-wrap removed (was dead CSS, no matching HTML) */
 
 .footer-logo-icon {
   height: 28px;
@@ -1336,25 +1369,30 @@ section { padding: 100px 0; }
   .nav-cta    { display: none; }
   .nav-toggle { display: flex; margin-left: auto; }
 
+  /* WB-04: top positions are now set dynamically by JS (positionMobileMenu).
+     These CSS values are safe starting points only — JS overrides them. */
   .navbar.menu-open .nav-links {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 68px; left: 0; right: 0;
+    top: 76px; left: 0; right: 0; /* JS will correct this */
     background: rgba(7,11,24,0.97);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 32px 24px;
     border-bottom: 1px solid rgba(37,99,235,0.15);
     gap: 24px;
+    z-index: 900;
   }
 
   .navbar.menu-open .nav-cta {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 280px; left: 24px; right: 24px;
+    top: 300px; left: 24px; right: 24px; /* JS will correct this */
     background: rgba(7,11,24,0.97);
     padding: 0 0 32px;
+    z-index: 900;
   }
 
   .hero-stats     { flex-direction: column; padding: 24px; }
@@ -1369,12 +1407,42 @@ section { padding: 100px 0; }
   .cta-form       { flex-direction: column; }
   .hero-actions   { flex-direction: column; }
   .phone-mockup   { animation: none; }
+
+  /* WB-14: Lifecycle flow — vertical stepper on mobile */
+  .lifecycle-flow {
+    flex-direction: column;
+    overflow-x: visible;
+    align-items: stretch;
+    padding: 16px 0;
+    gap: 8px;
+  }
+  .lifecycle-step {
+    flex-direction: row;
+    min-width: unset;
+    padding: 16px 20px;
+    gap: 16px;
+    text-align: left;
+  }
+  .step-info { align-items: flex-start; }
+  .step-desc { text-align: left; }
+  .step-arrow { transform: rotate(90deg); padding: 4px 0; font-size: 1.1rem; }
 }
 
+/* WB-09: Hero stats — stack vertically at 480px instead of hiding */
 @media (max-width: 480px) {
-  .hero-title   { font-size: 2.2rem; }
+  .hero-title    { font-size: 2.2rem; }
   .section-title { font-size: 1.8rem; }
-  .hero-stats   { display: none; }
+  .hero-stats {
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 0;
+    display: flex; /* Override any previous display:none */
+  }
+  .stat-num  { font-size: 1.8rem; }
+  .stat-unit { font-size: 1.2rem; }
+  .stat-item { padding: 8px 0; }
+  .stat-divider { width: 80%; height: 1px; }
+  .hero-badge { font-size: 0.65rem; letter-spacing: 0.03em; padding: 6px 14px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -1390,6 +1458,27 @@ section { padding: 100px 0; }
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 60px;
+}
+
+/* ─── FORM VALIDATION STATES (WB-24) ────────────────────────────── */
+.field-invalid {
+  border-color: var(--error) !important;
+  box-shadow: 0 0 0 2px rgba(239,68,68,0.15);
+}
+.field-valid {
+  border-color: var(--success) !important;
+}
+
+/* WB-26: Inline form error */
+.form-error {
+  display: none;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.35);
+  border-radius: var(--radius-sm);
+  color: #fca5a5;
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  margin-bottom: 12px;
 }
 
 .testimonial-card {
@@ -1767,8 +1856,16 @@ section { padding: 100px 0; }
 @media (max-width: 900px) {
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
   .faq-grid { grid-template-columns: 1fr; }
+  /* WB-21: vertical step connector */
   .steps-grid { flex-direction: column; }
-  .step-connector { margin: 0 auto; transform: rotate(90deg); }
+  .step-connector {
+    margin: 0 auto;
+    /* Use a natively-vertical glyph instead of rotating → */
+    font-size: 1.6rem;
+    padding: 0;
+  }
+  .step-connector::after { content: '↓'; }
+  .step-connector > * { display: none; } /* hide original arrow char via JS */
 }
 
 @media (max-width: 640px) {
@@ -1777,7 +1874,6 @@ section { padding: 100px 0; }
   .trust-badges { gap: 12px; }
   .whatsapp-float-label { display: none; }
   .whatsapp-float { padding: 14px; border-radius: 50%; }
-
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -1815,12 +1911,15 @@ section { padding: 100px 0; }
 .role-icon {
   width: 44px; height: 44px;
   color: var(--icon-color, var(--primary-light));
+  /* WB-17: color-mix fallback */
+  background: rgba(37,99,235,0.12);
   background: color-mix(in srgb, var(--icon-color, var(--primary-light)) 12%, transparent);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .role-icon svg { width: 22px; height: 22px; }
@@ -1999,7 +2098,10 @@ section { padding: 100px 0; }
 .mock-dashboard { display: flex; gap: 16px; padding: 0; }
 
 .mock-sidebar {
-  width: 130px;
+  /* WB-19: min-width instead of fixed width so it scales on large viewports */
+  min-width: 120px;
+  width: 22%;
+  max-width: 160px;
   flex-shrink: 0;
   background: rgba(255,255,255,0.02);
   border-right: 1px solid var(--border);
@@ -2167,8 +2269,19 @@ section { padding: 100px 0; }
   color: var(--text);
   font-family: inherit;
   font-size: 0.88rem;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
+}
+
+/* WB-25: select appearance on iOS Safari */
+.demo-form-wrap .form-group select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236e82a8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
 }
 
 .demo-form-wrap .form-group input:focus,
@@ -2192,6 +2305,7 @@ section { padding: 100px 0; }
    RESPONSIVE — ROLES / DISTRIBUTOR / SHOWCASE / DEMO
    ═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
+  /* WB-18: roles-grid stays 2-col at 900px */
   .roles-grid { grid-template-columns: repeat(2, 1fr); }
   .distributor-grid { grid-template-columns: 1fr; gap: 48px; }
   .showcase-grid { grid-template-columns: 1fr; gap: 56px; }
@@ -2200,12 +2314,17 @@ section { padding: 100px 0; }
 }
 
 @media (max-width: 640px) {
+  /* WB-18: single column for role cards on small phones */
   .roles-grid { grid-template-columns: 1fr; }
   .mock-window-wide { max-width: 100%; }
   .mock-dashboard { flex-direction: column; }
-  .mock-sidebar { width: 100%; flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .mock-sidebar { min-width: unset; width: 100%; max-width: none; flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--border); }
   .showcase-phones { max-width: 100%; align-items: center; gap: 20px; }
   .phone-mockup-sm { width: 100%; max-width: 260px; }
   .phone-mockup-offset { margin-top: 0; margin-left: 0; box-shadow: var(--shadow), var(--shadow-glow); }
   .demo-form-wrap { padding: 22px; }
+
+  /* WB-22: FAQ orphan last item on desktop — handled at desktop above */
+  /* WB-30: WhatsApp float clear of demo form submit on mobile */
+  .demo-section { padding-bottom: 120px; }
 }

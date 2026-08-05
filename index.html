@@ -59,7 +59,8 @@
       <span><strong>Free Trial Available</strong> — No credit card needed. Set up in 10 minutes. Cancel anytime.</span>
       <a href="#demo" class="trial-bar-link">Book a Demo →</a>
     </div>
-    <button class="trial-bar-close" onclick="this.parentElement.style.display='none'; document.body.classList.add('trial-bar-dismissed')" aria-label="Close">✕</button>
+    <!-- WB-02: id added; onclick moved to script.js -->
+    <button class="trial-bar-close" id="trialBarClose" aria-label="Close">✕</button>
   </div>
 
   <!-- ─── NAVBAR ──────────────────────────────────────────────────── -->
@@ -127,9 +128,40 @@
         </a>
       </div>
 
-      <!-- Brand banner showcase -->
+      <!-- WB-08: Replaced static logo-dark.png with a live CSS product mockup -->
       <div class="hero-brand-banner reveal delay-4">
-        <img src="assets/images/logo-dark.png" alt="BullBill — Smart Billing. Strong Business." class="brand-banner-img" />
+        <div class="mock-window mock-window-wide" style="max-width:820px">
+          <div class="mock-window-bar">
+            <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+            <span class="mock-window-title">app.bullbill.in — Live Dashboard</span>
+          </div>
+          <div class="mock-window-body mock-dashboard" style="gap:0">
+            <div class="mock-sidebar">
+              <div class="mock-side-item active">Overview</div>
+              <div class="mock-side-item">Orders</div>
+              <div class="mock-side-item">Menu</div>
+              <div class="mock-side-item">Kitchen</div>
+              <div class="mock-side-item">Loyalty</div>
+              <div class="mock-side-item">Reports</div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-stat-row">
+                <div class="mock-stat"><span class="mock-stat-label">Today&#39;s Collection</span><span class="mock-stat-value">₹48,230</span></div>
+                <div class="mock-stat"><span class="mock-stat-label">Orders Today</span><span class="mock-stat-value">186</span></div>
+                <div class="mock-stat"><span class="mock-stat-label">Active Tables</span><span class="mock-stat-value">7 / 12</span></div>
+              </div>
+              <div class="mock-chart">
+                <div class="mock-bar" style="height:40%"></div>
+                <div class="mock-bar" style="height:65%"></div>
+                <div class="mock-bar" style="height:50%"></div>
+                <div class="mock-bar" style="height:85%"></div>
+                <div class="mock-bar" style="height:70%"></div>
+                <div class="mock-bar" style="height:95%"></div>
+                <div class="mock-bar" style="height:60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="hero-stats reveal delay-5">
@@ -168,22 +200,22 @@
       </div>
 
       <div class="features-grid">
-
-        <div class="feature-card reveal" data-delay="0">
+        <!-- WB-12: Per-feature accent colors matching the services-grid pattern -->
+        <div class="feature-card reveal" data-delay="0" style="--icon-color:#f59e0b">
           <div class="feature-icon">
             <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.2"/><path d="M16 12h16a2 2 0 012 2v4a2 2 0 01-2 2H16a2 2 0 01-2-2v-4a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 20v16h20V20" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 28h8M20 32h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>Bills even when Wi-Fi goes down</h3>
-          <p>Your cashier keeps billing even when the internet drops. BullBill saves every bill and syncs automatically the moment you're back online — GST-correct, every time, with support for GST, VAT, and Excise line items for bars and licensed outlets.</p>
+          <h3>Bills when Wi-Fi down</h3>
+          <p>BullBill works 100% offline. Cashier takes orders and prints receipts during outages. Syncs to cloud when back online.</p>
           <div class="feature-tag">Never lose a sale</div>
         </div>
 
-        <div class="feature-card reveal" data-delay="80">
+        <div class="feature-card reveal" data-delay="80" style="--icon-color:#6366f1">
           <div class="feature-icon">
             <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="18" y="18" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/></svg>
           </div>
-          <h3>QR self-ordering for your customers</h3>
-          <p>One QR code per branch. Customers scan and see exactly what you've turned on — browse the menu, order takeaway, or order dine-in with a real table picker. Pick from multiple visual themes so it matches your brand.</p>
+          <h3>QR self-ordering</h3>
+          <p>Customers scan the table QR code to view menu, place orders, and request the bill — reducing waiter visits and errors.</p>
           <div class="feature-tag">Contactless & modern</div>
         </div>
 
@@ -810,30 +842,30 @@
         </div>
       </div>
 
-      <!-- Trust badges -->
+      <!-- WB-20: Per-badge icon colors for visual differentiation -->
       <div class="trust-badges reveal delay-2">
         <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>256-bit Encryption</span>
         </div>
         <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           <span>99.9% Uptime</span>
         </div>
         <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <span>GST Compliant</span>
         </div>
         <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
           <span>Made in India</span>
         </div>
         <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           <span>Works Offline</span>
         </div>
         <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z"/></svg>
           <span>WhatsApp Support</span>
         </div>
       </div>
@@ -903,9 +935,11 @@
         <h2 class="section-title reveal delay-1">Everything you wanted to ask<br /><span class="gradient-text">before signing up.</span></h2>
       </div>
 
+      <!-- WB-22: 9 FAQ items in 2-col grid; last item centred to avoid orphan -->
       <div class="faq-grid">
         <div class="faq-item reveal" data-delay="0">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <!-- WB-23: onclick removed; handled by event delegation in script.js -->
+          <button class="faq-q">
             How does the free trial work?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -915,7 +949,7 @@
         </div>
 
         <div class="faq-item reveal" data-delay="60">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             What happens if the internet goes down during service?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -925,17 +959,17 @@
         </div>
 
         <div class="faq-item reveal" data-delay="120">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             Do I need any special hardware or device?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-a">
-            <p>No special hardware needed. BullBill runs on any Android phone or tablet your staff already has. For the kitchen display, any cheap Android tablet works. For printing, BullBill connects to Bluetooth or Wi-Fi thermal printers commonly available at ₹2,000–₹5,000. That's it.</p>
+            <p>No special hardware needed. BullBill runs on any Android phone or tablet your staff already has. For the kitchen display, any cheap Android tablet works. For printing, BullBill connects to Bluetooth or Wi-Fi thermal printers commonly available at ₹2,000–₹5,000. That’s it.</p>
           </div>
         </div>
 
         <div class="faq-item reveal" data-delay="0">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             Is my restaurant data safe?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -945,17 +979,17 @@
         </div>
 
         <div class="faq-item reveal" data-delay="60">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             How does the kitchen display screen work?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-a">
-            <p>Open the BullBill app on a tablet placed in the kitchen and log in with the KOT (Kitchen Order Ticket) role. The moment a waiter confirms an order, it appears on the kitchen screen instantly. The chef taps "Done" when it's ready — the waiter gets notified on their screen to pick it up and serve.</p>
+            <p>Open the BullBill app on a tablet placed in the kitchen and log in with the KOT (Kitchen Order Ticket) role. The moment a waiter confirms an order, it appears on the kitchen screen instantly. The chef taps "Done" when it’s ready — the waiter gets notified on their screen to pick it up and serve.</p>
           </div>
         </div>
 
         <div class="faq-item reveal" data-delay="120">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             Can I manage multiple outlets from one account?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -965,32 +999,33 @@
         </div>
 
         <div class="faq-item reveal" data-delay="0">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             How does the customer loyalty program work?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-a">
-            <p>When a customer pays, the cashier enters their mobile number — that's all. Points are added to their account automatically. When they visit again and give their number, the cashier can see their points and apply a reward. Customers need no app, no card, and no signup on their end.</p>
+            <p>When a customer pays, the cashier enters their mobile number — that’s all. Points are added to their account automatically. When they visit again and give their number, the cashier can see their points and apply a reward. Customers need no app, no card, and no signup on their end.</p>
           </div>
         </div>
 
         <div class="faq-item reveal" data-delay="60">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q">
             How do I get pricing for my restaurant?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-a">
-            <p>Every restaurant is different — outlet count, features you actually need, whether you're a distributor onboarding several shops. Book a demo and we'll put together a plan that fits, with no obligation.</p>
+            <p>Every restaurant is different — outlet count, features you actually need, whether you’re a distributor onboarding several shops. Book a demo and we’ll put together a plan that fits, with no obligation.</p>
           </div>
         </div>
 
-        <div class="faq-item reveal" data-delay="120">
-          <button class="faq-q" onclick="toggleFaq(this)">
+        <!-- WB-22: 9th item spans both columns so it doesn’t orphan -->
+        <div class="faq-item reveal" data-delay="120" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto; width: 100%;">
+          <button class="faq-q">
             What does the Distributor Program involve?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-a">
-            <p>Distributors get a referral QR/link and can onboard shop owners directly — setting their plan while the shop owner just confirms and pays. A dedicated dashboard tracks every shop you've brought on, on web and Android. Book a demo to get set up as a distributor.</p>
+            <p>Distributors get a referral QR/link and can onboard shop owners directly — setting their plan while the shop owner just confirms and pays. A dedicated dashboard tracks every shop you’ve brought on, on web and Android. Book a demo to get set up as a distributor.</p>
           </div>
         </div>
       </div>
@@ -1080,9 +1115,11 @@
               <label for="demoMessage">Anything specific you'd like us to cover? (optional)</label>
               <textarea id="demoMessage" name="message" placeholder="e.g. currently billing on paper, want to see QR ordering, run a bar..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary form-submit">Book My Demo</button>
-            <div class="form-success" id="demoFormSuccess">✓ Thanks! We'll reach out to schedule your demo shortly.</div>
-          </form>
+          <!-- WB-26: Inline error div instead of alert() -->
+          <div class="form-error" id="demoFormError"></div>
+          <button type="submit" class="btn btn-primary form-submit">Book My Demo</button>
+          <div class="form-success" id="demoFormSuccess">✓ Thanks! We’ll reach out to schedule your demo shortly.</div>
+        </form>
         </div>
       </div>
     </div>
@@ -1123,6 +1160,21 @@
             <span class="footer-wordmark">Bull<span>Bill</span></span>
           </div>
           <p>Restaurant billing made simple.<br />Works without internet. GST ready.<br /><em>Billing &bull; Business &bull; Growth</em></p>
+          <!-- WB-28: Social media links -->
+          <div style="display:flex; gap:12px; margin-top:20px;">
+            <a href="https://www.instagram.com/bullbill.in" target="_blank" rel="noopener" aria-label="Instagram"
+               style="color:var(--text-muted); transition:color 0.2s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-muted)'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/bullbill" target="_blank" rel="noopener" aria-label="LinkedIn"
+               style="color:var(--text-muted); transition:color 0.2s;" onmouseover="this.style.color='#0a66c2'" onmouseout="this.style.color='var(--text-muted)'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://wa.me/919790589401" target="_blank" rel="noopener" aria-label="WhatsApp"
+               style="color:var(--text-muted); transition:color 0.2s;" onmouseover="this.style.color='#25d366'" onmouseout="this.style.color='var(--text-muted)'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
         </div>
         <div class="footer-links">
           <h5>Platform</h5>
